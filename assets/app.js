@@ -31,6 +31,7 @@
       '<a class="btn" href="' + href(b.href) + '"' + ext(b.href) + '>' + icon(b.icon || 'book', 'btn-ic') + '<span>' + b.text + '</span></a></div>';
   }
   function deco(key, cls) { return img(S.deco[key], 'deco ' + cls); }
+  function price(p, cls) { return '<div class="price rv ' + cls + '"><b>' + p.big + '</b><span>' + p.small + '</span></div>'; }
   function logo(brand) {
     return '<span class="logo"><span>' + brand.a + '</span>' + icon(brand.icon, 'logo-ic') + '<span>' + brand.b + '</span></span>';
   }
@@ -42,11 +43,11 @@
     var p = AD.photos.hero;
     return '<header id="top" class="sec hero bg-white">' +
       img(b.bg, 'hero-bg', true) +
-      deco('pencil', 'd-hero-top') +
+      deco('pencil', 'd-hero-top float') +
       '<div class="hero-strip">' +
-        '<div class="stat"><b>' + b.statLeft.big + '</b><span>' + b.statLeft.small + '</span></div>' +
+        '<div class="stat">' + icon(b.statLeft.icon || 'clock', 'stat-ic') + '<b>' + b.statLeft.big + '</b><span>' + b.statLeft.small + '</span></div>' +
         '<div class="logo-tab">' + logo(AD.brand) + '</div>' +
-        '<div class="stat"><b>' + b.statRight.big + '</b><span>' + b.statRight.small + '</span></div>' +
+        '<div class="stat">' + icon(b.statRight.icon || 'stairs', 'stat-ic') + '<b>' + b.statRight.big + '</b><span>' + b.statRight.small + '</span></div>' +
       '</div>' +
       '<h1 class="h1 rv">' + b.title + '</h1>' +
       '<div class="hero-stage">' +
@@ -76,17 +77,18 @@
       h2(b.title, '<span class="tag tag-under">' + b.tag + '</span>') +
       '<p class="sub rv">' + b.subtitle + '</p>' +
       '<div class="prog-tab rv"><b class="big">' + b.tab.big + '</b><span><b>' + b.tab.top + '</b><small>' + b.tab.small + '</small></span></div>' +
-      '<div class="mods">' + b.items.map(function (m, i) {
+      (b.side || []).map(function (sd) { return img(sd.img, 'prog-side ' + sd.pos); }).join('') +
+      '<div class="mods"><span class="mods-line rv" aria-hidden="true"></span>' + b.items.map(function (m, i) {
         return '<article class="mod rv"><span class="mod-tag">' + b.label + ' ' + (i + 1) + '</span>' +
-          '<div class="mod-l"><h3>' + m.title + '</h3><ul>' + m.points.map(function (p) { return '<li>' + p + '</li>'; }).join('') + '</ul></div>' +
+          '<div class="mod-l"><h3>' + (m.icon ? '<span class="mod-ic">' + icon(m.icon) + '</span>' : '') + '<span>' + m.title + '</span></h3><ul>' + m.points.map(function (p) { return '<li>' + p + '</li>'; }).join('') + '</ul></div>' +
           '<div class="mod-r"><div class="res-box"><h4>' + b.resultTitle + '</h4><p>' + m.result + '</p></div></div></article>';
       }).join('') + '</div></div>');
   };
 
   R.faq = function (b) {
-    return sec('faq', b.bg, 'faq', '<div class="wrap">' + h2(b.title) + '<div class="faq-list">' +
+    return sec('faq', b.bg, 'faq', '<div class="wrap">' + h2(b.title) + (b.img ? img(b.img, 'faq-pic rv') : '') + '<div class="faq-list">' +
       b.items.map(function (f, i) {
-        return '<details class="faq-item rv"' + (i === 0 ? ' open' : '') + '><summary><span>' + f.q + '</span><i class="pm" aria-hidden="true"></i></summary>' +
+        return '<details class="faq-item rv"' + (i === 0 ? ' open' : '') + '><summary><span class="faq-q">' + (f.icon ? icon(f.icon, 'faq-ic') : '') + '<span>' + f.q + '</span></span><i class="pm" aria-hidden="true"></i></summary>' +
           '<div class="faq-a"><p>' + f.a + '</p></div></details>';
       }).join('') + '</div></div>');
   };
@@ -104,8 +106,9 @@
     return sec('about', b.bg, 'auth', '<div class="wrap auth-grid">' +
       '<div class="auth-l">' + h2(a.title) + '<p class="auth-lead rv">' + a.lead + '</p>' +
         a.items.map(function (it) { return '<div class="auth-row rv"><span class="ic-circle">' + icon(it.icon) + '</span><p>' + it.text + '</p></div>'; }).join('') +
-        '<h3 class="facts-h rv">' + a.factsTitle + '</h3><ul class="facts rv">' + a.facts.map(function (f) { return '<li>' + f + '</li>'; }).join('') + '</ul>' +
-        '<p class="ask rv">' + a.ask + '</p>' +
+        '<h3 class="facts-h rv">' + a.factsTitle + '</h3><ul class="facts rv">' + a.facts.map(function (f, i) { var ic = (a.factIcons || [])[i]; return '<li' + (ic ? ' class="has-ic">' + icon(ic, 'fact-ic') : '>') + f + '</li>'; }).join('') + '</ul>' +
+        (a.price ? price(a.price, '') : '') +
+        (a.ask ? '<p class="ask rv">' + a.ask + '</p>' : '') +
         '<div class="links rv">' + a.links.map(function (l) {
           return '<a class="lnk lnk-' + l.icon + '" href="' + href(l.href) + '"' + ext(l.href) + '>' + icon(l.icon, 'lnk-ic') + '<span>' + l.text + '</span></a>';
         }).join('') + '</div></div>' +
@@ -129,13 +132,15 @@
 
   R.tariffs = function (b) {
     var t = AD.tariffs;
-    return sec('levels', b.bg, 'tar', '<div class="wrap">' + h2(t.title) + '<p class="sub rv">' + t.subtitle + '</p><div class="tar-grid">' +
+    var road = t.road ? '<div class="road rv" aria-label="Уровни по порядку: ' + t.road.join(', ') + '"><span class="road-line" aria-hidden="true"></span>' +
+      t.road.map(function (l) { return '<span class="road-dot"><i aria-hidden="true"></i><b>' + l + '</b></span>'; }).join('') + '</div>' : '';
+    return sec('levels', b.bg, 'tar', '<div class="wrap">' + h2(t.title) + '<p class="sub rv">' + t.subtitle + '</p>' + road + (t.price ? price(t.price, 'price-lg') : '') + '<div class="tar-grid">' +
       t.items.map(function (c) {
         return '<article class="tcard rv' + (c.dark ? ' dark' : '') + '"><span class="tag tag-top">' + c.tag + '</span>' +
-          '<h3>' + c.name + '</h3><p class="tdesc">' + c.desc + '</p>' +
+          (c.icon ? '<span class="tcard-ic">' + icon(c.icon) + '</span>' : '') + '<h3>' + c.name + '</h3><p class="tdesc">' + c.desc + '</p>' +
           '<ul>' + c.points.map(function (p) { return '<li>' + p + '</li>'; }).join('') + '</ul>' +
           '<div class="tres"><span class="outline" aria-hidden="true">' + t.resultWord + '</span><p>' + c.result + '</p></div>' +
-          '<a class="btn btn-block" href="' + AD.buy + '" target="_blank" rel="noopener"><span>' + t.button + '</span></a>' +
+          '<a class="btn btn-block" href="' + AD.buy + '" target="_blank" rel="noopener">' + icon('cart', 'btn-ic') + '<span>' + t.button + '</span></a>' +
           '<span class="below">' + t.below + icon('arrow') + '</span></article>';
       }).join('') + '</div></div>');
   };
@@ -144,7 +149,9 @@
     var c = b.fromAd ? AD.cta : b;
     var p = AD.photos[b.photoKey || 'cta'];
     return sec(b.fromAd ? 'buy' : 'end', b.bg, 'cta', '<div class="paws" aria-hidden="true"></div><div class="wrap cta-grid">' +
-      '<div class="cta-l"><h2 class="cta-h rv">' + c.title + '</h2><p class="cta-p rv">' + c.text + '</p>' + btn(c.button) + '</div>' +
+      '<div class="cta-l"><h2 class="cta-h rv">' + c.title + '</h2><p class="cta-p rv">' + c.text + '</p>' +
+        (c.chips ? '<ul class="cta-chips">' + c.chips.map(function (ch) { return '<li class="chip rv">' + icon(ch.icon, 'chip-ic') + '<span>' + ch.text + '</span></li>'; }).join('') + '</ul>' : '') +
+        btn(c.button) + '</div>' +
       '<div class="cta-r rv"><span class="cta-circle"></span>' + img(p, 'cta-photo') + deco('pencil', 'd-cta') + '</div></div>');
   };
 
@@ -172,6 +179,26 @@
       es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
     }, { rootMargin: '0px 0px -8% 0px' });
     rv.forEach(function (el) { io.observe(el); });
+  }
+  // карточки по очереди: задержка 80 мс внутри сетки
+  [].forEach.call(document.querySelectorAll('.aud-grid, .fmt-grid, .gal-grid, .tar-grid, .faq-list, .cta-chips, .mods'), function (g) {
+    var k = 0;
+    [].forEach.call(g.children, function (c) { if (c.classList.contains('rv') && !c.classList.contains('mods-line')) { c.style.setProperty('--d', (k % 4) * 80 + 'ms'); k++; } });
+  });
+  // счётчики: числа в фактах набегают до своего значения
+  var nums = [].filter.call(document.querySelectorAll('.facts b, .price b'), function (b) { return /^\d+\+?( €)?$/.test(b.textContent.trim()); });
+  nums.forEach(function (b) {
+    var m = b.textContent.trim().match(/^(\d+)(.*)$/); b.setAttribute('data-to', m[1]); b.setAttribute('data-tail', m[2]); b.style.minWidth = b.offsetWidth + 'px'; b.classList.add('count');
+  });
+  if (!reduce && 'IntersectionObserver' in window) {
+    var cio = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (!e.isIntersecting) return; cio.unobserve(e.target);
+        var b = e.target, to = +b.getAttribute('data-to'), tail = b.getAttribute('data-tail'), t0 = null, dur = 1100;
+        (function step(t) { t0 = t0 || t; var k = Math.min(1, (t - t0) / dur), v = Math.round(to * (1 - Math.pow(1 - k, 3))); b.textContent = v + tail; if (k < 1) requestAnimationFrame(step); })(performance.now());
+      });
+    }, { rootMargin: '0px 0px -10% 0px' });
+    nums.forEach(function (b) { cio.observe(b); });
   }
 
   // FAQ: smooth open/close, one open at a time
