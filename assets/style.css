@@ -119,10 +119,10 @@ b { font-weight: 600; color: #4c4c4c; }
 .btn2 .ic { width: 16px; height: 16px; transition: transform .25s var(--ease); }
 .btn2:hover { background: #8f7043; }
 .btn2:hover .ic { transform: translateX(4px); }
-.deco { position: absolute; z-index: 2; pointer-events: none; filter: blur(.4px); }
+.deco { position: absolute; z-index: 2; pointer-events: none; }
 .d-hero-top { width: 150px; left: 4%; top: -40px; transform: rotate(-28deg); filter: blur(1.5px); opacity: .9; }
 .d-hero-bl { width: 120px; left: -36px; bottom: 30px; transform: rotate(52deg); filter: blur(1px); opacity: .85; }
-.d-hero-br { width: 96px; right: -30px; bottom: -6px; filter: blur(.5px); }
+.d-hero-br { width: 96px; right: -30px; bottom: -6px; }
 
 /* ---------- 2. Кому подойдёт ---------- */
 .aud { padding: 30px 0 70px; }

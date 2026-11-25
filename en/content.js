@@ -61,14 +61,14 @@ window.SITE = {
    },
    "left": {
     "src": "media/flank_books.webp",
-    "w": 500,
-    "h": 619,
+    "w": 484,
+    "h": 603,
     "alt": "Стопка книг с наушниками"
    },
    "right": {
     "src": "media/flank_globe.webp",
-    "w": 427,
-    "h": 652,
+    "w": 411,
+    "h": 636,
     "alt": "Глобус на деревянной подставке"
    }
   },
@@ -229,8 +229,8 @@ window.SITE = {
     {
      "img": {
       "src": "media/fmt_book.webp",
-      "w": 307,
-      "h": 206,
+      "w": 291,
+      "h": 190,
       "alt": "Открытая книга"
      },
      "title": "Читать по шагу",
@@ -239,8 +239,8 @@ window.SITE = {
     {
      "img": {
       "src": "media/fmt_headphones.webp",
-      "w": 199,
-      "h": 251,
+      "w": 183,
+      "h": 235,
       "alt": "Наушники"
      },
      "title": "Слушать примеры",
@@ -249,8 +249,8 @@ window.SITE = {
     {
      "img": {
       "src": "media/fmt_cards.webp",
-      "w": 219,
-      "h": 174,
+      "w": 203,
+      "h": 158,
       "alt": "Стопка карточек"
      },
      "title": "Повторять карточками",
@@ -259,8 +259,8 @@ window.SITE = {
     {
      "img": {
       "src": "media/fmt_notebook.webp",
-      "w": 322,
-      "h": 202,
+      "w": 306,
+      "h": 186,
       "alt": "Блокнот с ручкой"
      },
      "title": "Записывать свои фразы",
@@ -269,8 +269,8 @@ window.SITE = {
     {
      "img": {
       "src": "media/fmt_question.webp",
-      "w": 165,
-      "h": 252,
+      "w": 149,
+      "h": 236,
       "alt": "Знак вопроса"
      },
      "title": "Проверять себя",
@@ -317,32 +317,32 @@ window.SITE = {
  "deco": {
   "pencil": {
    "src": "media/deco_pencil.webp",
-   "w": 519,
-   "h": 341,
+   "w": 503,
+   "h": 325,
    "alt": ""
   },
   "paperball": {
    "src": "media/deco_paperball.webp",
-   "w": 241,
-   "h": 241,
+   "w": 225,
+   "h": 225,
    "alt": ""
   },
   "eraser": {
    "src": "media/deco_eraser.webp",
-   "w": 227,
-   "h": 187,
+   "w": 211,
+   "h": 171,
    "alt": ""
   },
   "plane": {
    "src": "media/deco_plane.webp",
-   "w": 475,
-   "h": 247,
+   "w": 459,
+   "h": 231,
    "alt": ""
   },
   "note": {
    "src": "media/deco_note.webp",
-   "w": 269,
-   "h": 215,
+   "w": 253,
+   "h": 199,
    "alt": ""
   }
  },
@@ -357,19 +357,19 @@ window.SITE = {
    "hero": {
     "src": "media/dias_hero.webp",
     "w": 900,
-    "h": 900,
+    "h": 917,
     "alt": "Диас, автор курса Dias English"
    },
    "author": {
     "src": "media/dias_author.webp",
     "w": 900,
-    "h": 1015,
+    "h": 1222,
     "alt": "Диас со скрещёнными руками"
    },
    "cta": {
     "src": "media/dias_cta.webp",
     "w": 800,
-    "h": 1207,
+    "h": 1241,
     "alt": "Диас с наушниками на шее"
    }
   },
