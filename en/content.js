@@ -334,21 +334,21 @@ window.SITE = {
   "photos": {
    "hero": {
     "src": "media/dias_hero.webp",
-    "w": 900,
-    "h": 917,
-    "alt": "Диас, автор курса Dias English"
+    "w": 600,
+    "h": 800,
+    "alt": "Диас на арене Колизея"
    },
    "author": {
     "src": "media/dias_author.webp",
-    "w": 900,
-    "h": 1037,
+    "w": 720,
+    "h": 960,
     "alt": "Диас у Колизея в полосатом свитере"
    },
    "cta": {
     "src": "media/dias_cta.webp",
-    "w": 800,
-    "h": 781,
-    "alt": "Диас с чашкой кофе"
+    "w": 600,
+    "h": 800,
+    "alt": "Диас с чашкой кофе в римском кафе"
    }
   },
   "author": {

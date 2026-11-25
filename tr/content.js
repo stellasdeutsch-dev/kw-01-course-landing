@@ -335,20 +335,20 @@ window.SITE = {
   "photos": {
    "hero": {
     "src": "media/timur_hero.webp",
-    "w": 900,
-    "h": 957,
-    "alt": "Тимур, автор курса Alterna Timur"
+    "w": 600,
+    "h": 800,
+    "alt": "Тимур у белой стены"
    },
    "author": {
     "src": "media/timur_author.webp",
-    "w": 900,
-    "h": 1114,
+    "w": 720,
+    "h": 960,
     "alt": "Тимур в тёмно-зелёном свитере"
    },
    "cta": {
     "src": "media/timur_cta.webp",
-    "w": 800,
-    "h": 942,
+    "w": 600,
+    "h": 800,
     "alt": "Тимур с ноутбуком в руках"
    }
   },
