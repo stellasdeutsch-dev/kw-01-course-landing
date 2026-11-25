@@ -4,7 +4,7 @@
   var root = document.getElementById('app');
   var page = document.body.getAttribute('data-page') || 'main';
   var base = document.body.getAttribute('data-base') || '';
-  var AD = S.ads[S.ad] || S.ads.dias;
+  var AD = S.platform || (S.ads && (S.ads[S.ad] || S.ads.dias));
 
   Object.keys(S.theme || {}).forEach(function (k) { document.documentElement.style.setProperty(k, S.theme[k]); });
 
