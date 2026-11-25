@@ -18,15 +18,6 @@ window.SITE = {
    "adTariffs",
    "adCta",
    "footer"
-  ],
-  "lesson": [
-   "hero",
-   "audience",
-   "program",
-   "faq",
-   "format",
-   "ending",
-   "footer"
   ]
  },
  "blocks": {
@@ -277,19 +268,6 @@ window.SITE = {
      "text": "Сделай задания в конце. Ошибки покажут, какой шаг перечитать."
     }
    ]
-  },
-  "ending": {
-   "type": "cta",
-   "bg": "white",
-   "title": "Гайд закончился. <br>Сохрани ссылку, чтобы вернуться к шагам.",
-   "text": "Пройди шаги ещё раз через пару дней. <br>Так тема запомнится надолго.",
-   "button": {
-    "text": "К первому шагу",
-    "href": "#program",
-    "tag": "Повторить",
-    "icon": "book"
-   },
-   "photoKey": "cta"
   },
   "footer": {
    "type": "footer"

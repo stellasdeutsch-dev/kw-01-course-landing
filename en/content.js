@@ -18,15 +18,6 @@ window.SITE = {
    "adTariffs",
    "adCta",
    "footer"
-  ],
-  "lesson": [
-   "hero",
-   "audience",
-   "program",
-   "faq",
-   "format",
-   "ending",
-   "footer"
   ]
  },
  "blocks": {
@@ -278,19 +269,6 @@ window.SITE = {
     }
    ]
   },
-  "ending": {
-   "type": "cta",
-   "bg": "white",
-   "title": "Гайд закончился. <br>Сохрани ссылку, чтобы вернуться к шагам.",
-   "text": "Пройди шаги ещё раз через пару дней. <br>Так тема запомнится надолго.",
-   "button": {
-    "text": "К первому шагу",
-    "href": "#program",
-    "tag": "Повторить",
-    "icon": "book"
-   },
-   "photoKey": "cta"
-  },
   "footer": {
    "type": "footer"
   }
@@ -363,14 +341,14 @@ window.SITE = {
    "author": {
     "src": "media/dias_author.webp",
     "w": 900,
-    "h": 1222,
-    "alt": "Диас со скрещёнными руками"
+    "h": 1037,
+    "alt": "Диас у Колизея в полосатом свитере"
    },
    "cta": {
     "src": "media/dias_cta.webp",
     "w": 800,
-    "h": 1241,
-    "alt": "Диас с наушниками на шее"
+    "h": 781,
+    "alt": "Диас с чашкой кофе"
    }
   },
   "author": {
