@@ -524,3 +524,4 @@ b { font-weight: 600; color: #4c4c4c; }
 @media (max-width: 760px) { .auth .price { order: 3; } .price-lg { margin-bottom: 30px; } }
 .auth-photo { z-index: 1; }
 .auth-r .d-auth-1, .auth-r .d-auth-3 { z-index: 0; }
+.plate, .plate2, .plate3 { z-index: 2; }
