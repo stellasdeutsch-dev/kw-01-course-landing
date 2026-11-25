@@ -32,7 +32,7 @@
   }
   function deco(key, cls) { return img(S.deco[key], 'deco ' + cls); }
   function logo(brand) {
-    return '<span class="logo">' + brand.a + icon(brand.icon, 'logo-ic') + brand.b + '</span>';
+    return '<span class="logo"><span>' + brand.a + '</span>' + icon(brand.icon, 'logo-ic') + '<span>' + brand.b + '</span></span>';
   }
 
   /* ---------- blocks ---------- */
